@@ -1101,9 +1101,12 @@
                     <div class="card p-6 rounded-2xl shadow-sm">
                         <h3 class="display font-extrabold text-lg mb-4" style="color:var(--bark)">Send us a message</h3>
                         <form id="contactForm" style="display: flex; flex-direction: column; gap: 12px;">
-                            <input type="text" id="contactName" class="tester-input" placeholder="Your Name" required style="padding:12px; font-size:.95rem; border-radius: 8px; border: 1px solid var(--border);">
-                            <input type="email" id="contactEmail" class="tester-input" placeholder="Your Email" required style="padding:12px; font-size:.95rem; border-radius: 8px; border: 1px solid var(--border);">
-                            <textarea id="contactMessage" class="film-review" placeholder="How can we help you?" required style="padding:12px; font-size:.95rem; min-height: 100px; border-radius: 8px; border: 1px solid var(--border);"></textarea>
+                  <!-- Change the Name input to this: -->
+<input type="text" id="contactName" class="tester-input" placeholder="Your Name" required autocomplete="name" style="padding:12px; font-size:.95rem; border-radius: 8px; border: 1px solid var(--border);">
+
+<!-- Change the Email input to this: -->
+<input type="email" id="contactEmail" class="tester-input" placeholder="Your Email" required autocomplete="email" inputmode="email" style="padding:12px; font-size:.95rem; border-radius: 8px; border: 1px solid var(--border);">
+                <textarea id="contactMessage" class="film-review" placeholder="How can we help you?" required style="padding:12px; font-size:.95rem; min-height: 100px; border-radius: 8px; border: 1px solid var(--border);"></textarea>
                             <button type="submit" class="btn btn-primary" style="padding: 14px; font-size: 1rem; border-radius: 10px;">Send Enquiry</button>
                         </form>
                     </div>

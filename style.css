@@ -17,11 +17,30 @@
     --shadow:0 10px 40px -10px rgba(26, 44, 56, 0.06);
     --shadow-hover:0 20px 50px -15px rgba(26, 44, 56, 0.12);
 }
+/* --- Custom Themed Scrollbar --- */
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--bark-soft) var(--cream);
+}
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--bark-soft);
+    border-radius: 20px;
+    border: 3px solid var(--cream);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--teal);
+}
 body.theme-dark{--cream:#111418;--cream-deep:#1B2026;--bark:#E0E6EA;--bark-soft:#94A3B8;--sky:#1B2026;--sky-deep:#111418;--card:#1B2026;--border:#2D333B;--shadow:0 4px 20px -4px rgba(0,0,0,.2);--shadow-hover:0 12px 30px -8px rgba(0,0,0,.4)}
 body.theme-warm{--cream:#FAF5EB;--cream-deep:#EDE3CC;--bark:#3B2E25;--bark-soft:#6B5544;--sky:#EFE5D2;--sky-deep:#E5D8BD;--card:#FFFAF0;--border:#E0D2B6;--shadow:0 4px 20px -4px rgba(59,46,37,.08);--shadow-hover:0 12px 30px -8px rgba(59,46,37,.12)}
 body.theme-soft{--cream:#F8FAFC;--cream-deep:#E2E8F0;--bark:#1E293B;--bark-soft:#475569;--sky:#EFF6FF;--sky-deep:#DBEAFE;--card:#FFF;--border:#CBD5E1;--shadow:0 4px 20px -4px rgba(30,41,59,.05);--shadow-hover:0 12px 30px -8px rgba(30,41,59,.1)}
-body.theme-high-contrast{--cream:#000;--cream-deep:#000;--bark:#FFF;--bark-soft:#FFF;--sky:#000;--sky-deep:#000;--card:#000;--border:#FFF;--shadow:none;--shadow-hover:none;--teal:#FFFF00;--teal-deep:#FFFF00;--terracotta:#00FF00;--honey:#FFFF00;--rose:#FF00FF;--sage:#00FFFF}
-body.season-winter{--cream:#F8FBFD;--cream-deep:#E1E8F0;--bark:#1A2B3C;--bark-soft:#4A6275;--teal:#2E5C8A;--teal-deep:#1E4060;--terracotta:#8A93A6;--honey:#C9A566;--rose:#93A8BC;--sage:#6F8A9B;--sky:#EAF2FA;--sky-deep:#D6E4F2;--card:#FFF;--border:#D2DCEA;background:linear-gradient(180deg,#D6E4F2 0%,#F8FBFD 100%)}
 body.season-spring{--cream:#FDFCF8;--cream-deep:#F2EEDD;--bark:#2B3025;--bark-soft:#5C6353;--teal:#6BAE5E;--teal-deep:#4E8A43;--terracotta:#F2A6B3;--honey:#F2C84B;--rose:#D8849B;--sage:#8ECB8C;--sky:#F0F8E8;--sky-deep:#DCEBCE;--card:#FFF;--border:#DCE6CC;background:linear-gradient(180deg,#DCEBCE 0%,#FDFCF8 100%)}
 body.season-summer{--cream:#FCFBFA;--cream-deep:#F4ECE0;--bark:#1A2B30;--bark-soft:#4A5C66;--teal:#1AA37E;--teal-deep:#14856A;--terracotta:#D66B3C;--honey:#D9A521;--rose:#C76B82;--sage:#7CA890;--sky:#E6F2F2;--sky-deep:#C8E0E0;--card:#FFF;--border:#E0D2B6;background:linear-gradient(180deg,#C8E0E0 0%,#FCFBFA 100%)}
 body.season-autumn{--cream:#FDF7F2;--cream-deep:#F0E2D0;--bark:#3B2A1E;--bark-soft:#6B4A37;--teal:#A05631;--teal-deep:#7A3F21;--terracotta:#D9633E;--honey:#D49522;--rose:#B5524A;--sage:#8A9A5B;--sky:#F5EBE0;--sky-deep:#E8D5C0;--card:#FFF;--border:#D6BFA8;background:linear-gradient(180deg,#E8D5C0 0%,#FDF7F2 100%)}
@@ -1570,4 +1589,48 @@ body.theme-high-contrast .glow-text {
 
 .quiet-cove-link:active {
     transform: scale(0.95);
+}
+/* --- Safe Mobile Back to Top Button --- */
+@media (max-width: 768px) {
+    .back-to-top-btn {
+        display: flex !important;
+        bottom: 80px !important; /* Sits neatly above the bottom nav bar */
+        right: 16px !important;
+        width: 40px !important;
+        height: 40px !important;
+        opacity: 0.8 !important;
+    }
+    .back-to-top-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+/* --- Smoother Card Hover --- */
+.card {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+.card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 20px 35px -10px rgba(0,0,0,0.12) !important;
+}
+/* === REMOVE GLOW EFFECTS === */
+
+/* 1. Remove glow and pulse from the Hero Title text */
+.glow-text {
+    text-shadow: none !important;
+    animation: none !important;
+    color: var(--teal); /* Keeps the nice teal color, just removes the glow */
+}
+
+/* 2. Remove glow/shadow from the Home button (Header Logo) */
+.brand-logo, 
+#mbnHome, 
+#musicToggleBtn {
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* 3. Remove the subtle floating animation from the hero title if desired */
+.hero-title {
+    animation: none !important;
 }
